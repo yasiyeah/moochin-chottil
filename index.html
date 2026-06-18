@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moochin Chottil — Chaya, Snacks & Gossip | Tirur</title>
+<meta name="description" content="Moochin Chottil — tea, coffee, oil snacks, cool drinks and the best gossip corner in Codakkal, Tirur, Malappuram.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Karla:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-950:#15261B;
+    --ink-900:#1D3324;
+    --green-800:#1F5C38;
+    --green-600:#247A45;
+    --green-500:#2E9457;
+    --gold-600:#D9A100;
+    --gold-500:#F2B705;
+    --gold-300:#F6D573;
+    --cream-50:#FBF6E9;
+    --cream-100:#F1E4C2;
+    --amber-400:#D98A4D;
+    --amber-700:#8E481F;
+    --ink:#101C13;
+    --ff-display:'Baloo 2', sans-serif;
+    --ff-body:'Karla', sans-serif;
+    --ff-hand:'Kalam', cursive;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--ff-body);
+    background:var(--cream-50);
+    color:var(--ink);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  h1,h2,h3{font-family:var(--ff-display);line-height:1.1;}
+  section{padding:96px 6vw;}
+  .eyebrow{
+    font-family:var(--ff-body);
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    font-size:.78rem;
+    color:var(--green-600);
+    display:inline-flex;
+    align-items:center;
+    gap:.5em;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:2px;
+    background:var(--green-600);
+    display:inline-block;
+  }
+  :focus-visible{outline:3px solid var(--gold-500);outline-offset:3px;}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    font-family:var(--ff-body);
+    font-weight:700;
+    font-size:.95rem;
+    padding:14px 28px;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    gap:.6em;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-primary{background:var(--gold-500);color:var(--ink-950);box-shadow:0 8px 20px -8px rgba(242,183,5,.6);}
+  .btn-primary:hover{background:var(--gold-600);}
+  .btn-ghost{background:transparent;border-color:rgba(247,238,221,.5);color:var(--cream-50);}
+  .btn-ghost:hover{background:rgba(247,238,221,.12);}
+  .btn-dark{background:var(--ink-950);color:var(--cream-50);}
+  .btn-dark:hover{background:var(--green-800);}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 6vw;
+    background:rgba(21,38,27,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(247,238,221,.08);
+  }
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{height:40px;width:auto;}
+  .brand .brand-name{
+    font-family:var(--ff-display);
+    font-weight:700;
+    font-size:1rem;
+    color:var(--cream-50);
+    letter-spacing:.02em;
+  }
+  nav{display:flex;align-items:center;gap:18px;}
+  nav .nav-links{display:flex;gap:24px;}
+  nav .nav-links a{
+    color:var(--cream-100);
+    font-size:.9rem;
+    font-weight:600;
+    opacity:.85;
+    transition:opacity .2s;
+  }
+  nav .nav-links a:hover{opacity:1;}
+  .header-call{font-size:.85rem;padding:10px 20px;}
+  .icon-btn{
+    width:38px;height:38px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;justify-content:center;
+    background:rgba(247,238,221,.1);
+    color:var(--cream-50);
+    transition:background .2s, transform .2s;
+  }
+  .icon-btn:hover{background:var(--gold-500);color:var(--ink-950);transform:translateY(-2px);}
+  .icon-btn svg{width:19px;height:19px;}
+  @media (max-width:760px){ nav .nav-links{display:none;} }
+  @media (max-width:480px){ .brand .brand-name{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    background:radial-gradient(ellipse at 75% 20%, var(--green-800) 0%, var(--ink-950) 55%, #0D1A11 100%);
+    color:var(--cream-50);
+    display:flex;
+    align-items:center;
+    padding:140px 6vw 80px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background-image:radial-gradient(rgba(247,238,221,.05) 1px, transparent 1.5px);
+    background-size:26px 26px;
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:40px;
+    align-items:center;
+    width:100%;
+    position:relative;
+    z-index:2;
+  }
+  .hero-logo{height:84px;width:auto;margin-bottom:18px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.35));}
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    font-weight:800;
+    color:var(--cream-50);
+    transform:rotate(-1.5deg);
+    text-shadow:3px 3px 0 var(--gold-600);
+  }
+  .hero h1 small{
+    display:block;
+    font-family:var(--ff-hand);
+    font-weight:400;
+    font-size:.32em;
+    color:var(--gold-300);
+    transform:rotate(1deg);
+    margin-top:6px;
+  }
+  .hero p.lede{
+    margin-top:22px;
+    font-size:1.15rem;
+    max-width:480px;
+    color:var(--cream-100);
+  }
+  .hero-actions{
+    margin-top:34px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .hero-tags{
+    margin-top:30px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    font-size:.8rem;
+    color:var(--cream-100);
+    opacity:.75;
+  }
+  .hero-tags span{
+    border:1px solid rgba(247,238,221,.25);
+    padding:5px 12px;
+    border-radius:999px;
+  }
+
+  /* ---------- HERO ILLUSTRATION (chai glass + steam -> gossip) ---------- */
+  .hero-art{
+    position:relative;
+    height:420px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+  .glass-wrap{position:relative;width:140px;}
+  .glass{
+    width:140px;height:170px;
+    background:linear-gradient(180deg, var(--amber-400) 0%, #B5612E 60%, var(--amber-700) 100%);
+    clip-path:polygon(18% 0%, 82% 0%, 100% 100%, 0% 100%);
+    border-radius:0 0 10px 10px;
+    box-shadow:inset 0 -14px 24px rgba(0,0,0,.25), 0 18px 40px -12px rgba(0,0,0,.6);
+    position:relative;
+  }
+  .glass::before{
+    content:"";
+    position:absolute;
+    top:0;left:18%;right:18%;
+    height:14px;
+    background:var(--gold-300);
+    border-radius:50%;
+    filter:blur(.3px);
+  }
+  .glass-rim{
+    position:absolute;top:-8px;left:14%;right:14%;
+    height:16px;
+    border:3px solid rgba(247,238,221,.5);
+    border-radius:50%;
+  }
+  .steam{
+    position:absolute;
+    bottom:175px;
+    width:12px;height:34px;
+    border-radius:50%;
+    background:rgba(247,238,221,.55);
+    filter:blur(5px);
+    animation:steamRise 4.2s ease-in infinite;
+  }
+  .steam:nth-child(1){left:30px; animation-delay:0s;}
+  .steam:nth-child(2){left:62px; animation-delay:1.1s;}
+  .steam:nth-child(3){left:94px; animation-delay:2.2s;}
+  @keyframes steamRise{
+    0%{transform:translate(0,0) scale(.7);opacity:0;}
+    18%{opacity:.6;}
+    55%{transform:translate(10px,-90px) scale(1);opacity:.35;}
+    100%{transform:translate(-12px,-180px) scale(1.3);opacity:0;}
+  }
+  .word-bubble{
+    position:absolute;
+    bottom:200px;
+    font-family:var(--ff-hand);
+    font-weight:700;
+    font-size:.95rem;
+    color:var(--ink);
+    background:var(--gold-300);
+    padding:6px 14px;
+    border-radius:14px 14px 14px 2px;
+    white-space:nowrap;
+    box-shadow:0 6px 14px -6px rgba(0,0,0,.4);
+    opacity:0;
+    animation:bubbleRise 6s ease-in-out infinite;
+  }
+  .word-bubble:nth-child(4){left:-10px; animation-delay:.4s;}
+  .word-bubble:nth-child(5){left:80px; animation-delay:2.6s; background:var(--cream-50);}
+  .word-bubble:nth-child(6){left:20px; animation-delay:4.5s; background:var(--green-600); color:var(--cream-50);}
+  @keyframes bubbleRise{
+    0%{transform:translateY(10px) scale(.7);opacity:0;}
+    12%{opacity:1;transform:translateY(-10px) scale(1);}
+    35%{opacity:1;transform:translateY(-70px) scale(1);}
+    55%{opacity:0;transform:translateY(-110px) scale(.9);}
+    100%{opacity:0;transform:translateY(-110px) scale(.9);}
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{height:300px;margin-top:20px;}
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{
+    background:var(--green-600);
+    color:var(--cream-50);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:16px 0;
+    border-top:3px solid var(--ink-950);
+    border-bottom:3px solid var(--ink-950);
+  }
+  .marquee-track{
+    display:flex;
+    width:max-content;
+    animation:marquee 22s linear infinite;
+  }
+  .marquee-track span{
+    font-family:var(--ff-display);
+    font-weight:700;
+    font-size:1.1rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    padding:0 28px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+  .marquee-track span::after{content:"☕";font-size:1rem;}
+  @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- MENU ---------- */
+  .menu-head{max-width:600px;margin-bottom:50px;}
+  .menu-head h2{font-size:clamp(1.9rem,4vw,2.6rem);}
+  .menu-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  .menu-card{
+    background:var(--cream-100);
+    border:2px solid var(--ink-950);
+    border-radius:18px;
+    padding:28px 22px;
+    transition:transform .3s ease, box-shadow .3s ease, background .3s ease;
+    position:relative;
+  }
+  .menu-card:hover{
+    transform:translateY(-8px) rotate(-.5deg);
+    background:var(--cream-50);
+    box-shadow:0 18px 30px -14px rgba(21,38,27,.45);
+  }
+  .menu-card .icon{
+    width:46px;height:46px;
+    color:var(--green-600);
+    margin-bottom:18px;
+  }
+  .menu-card h3{font-size:1.3rem;margin-bottom:10px;}
+  .menu-card p{font-size:.92rem;color:var(--ink-900);opacity:.85;margin-bottom:16px;}
+  .menu-card ul{display:flex;flex-direction:column;gap:6px;}
+  .menu-card ul li{
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--ink-950);
+    padding-left:16px;
+    position:relative;
+  }
+  .menu-card ul li::before{
+    content:"";
+    position:absolute;left:0;top:7px;
+    width:6px;height:6px;
+    background:var(--gold-500);
+    border-radius:50%;
+  }
+  @media (max-width:980px){ .menu-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .menu-grid{grid-template-columns:1fr;} }
+
+  /* ---------- GALLERY / SNAPSHOTS ---------- */
+  .gallery{background:var(--cream-50);}
+  .gallery-head{max-width:600px;margin-bottom:50px;}
+  .gallery-head h2{font-size:clamp(1.9rem,4vw,2.6rem);}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  .gallery-card{
+    background:var(--ink-950);
+    border-radius:20px;
+    padding:26px 18px 20px;
+    text-align:center;
+    transition:transform .3s ease;
+  }
+  .gallery-card:hover{transform:translateY(-6px) rotate(.4deg);}
+  .gallery-card .badge{
+    width:96px;height:96px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .gallery-card .badge svg{width:64px;height:64px;}
+  .gallery-card span{
+    font-family:var(--ff-hand);
+    font-size:1.05rem;
+    color:var(--gold-300);
+    font-weight:700;
+  }
+  .mini-steam{animation:miniSteamRise 4s ease-in infinite;}
+  @keyframes miniSteamRise{
+    0%{transform:translateY(0) scale(.7);opacity:0;}
+    20%{opacity:.7;}
+    60%{transform:translateY(-14px) scale(1);opacity:.4;}
+    100%{transform:translateY(-26px) scale(1.1);opacity:0;}
+  }
+  @media (max-width:980px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .gallery-grid{grid-template-columns:1fr;} }
+
+  /* ---------- GOSSIP CORNER ---------- */
+  .gossip{
+    background:radial-gradient(circle at 20% 20%, var(--ink-900), var(--green-800) 70%);
+    color:var(--cream-50);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .gossip-copy h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:18px;}
+  .gossip-copy p{font-size:1.05rem;max-width:440px;color:var(--cream-100);margin-bottom:14px;}
+  .gossip-stage{
+    position:relative;
+    height:340px;
+  }
+  .bubble{
+    position:absolute;
+    font-family:var(--ff-hand);
+    font-weight:700;
+    padding:10px 18px;
+    border-radius:18px;
+    font-size:1rem;
+    box-shadow:0 10px 20px -8px rgba(0,0,0,.4);
+    animation:bob 5s ease-in-out infinite;
+  }
+  .bubble.b1{top:6%;left:6%;background:var(--gold-300);color:var(--ink);animation-delay:0s;}
+  .bubble.b2{top:30%;left:48%;background:var(--cream-50);color:var(--ink);animation-delay:.7s;}
+  .bubble.b3{top:55%;left:10%;background:var(--green-600);color:var(--cream-50);animation-delay:1.4s;}
+  .bubble.b4{top:70%;left:55%;background:var(--cream-50);color:var(--ink);animation-delay:2.1s;}
+  .bubble.b5{top:5%;left:62%;background:var(--gold-500);color:var(--ink);animation-delay:2.8s;}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-14px) rotate(2deg);}}
+  @media (max-width:900px){
+    .gossip{grid-template-columns:1fr;}
+    .gossip-stage{height:240px;}
+  }
+
+  /* ---------- LOCATION ---------- */
+  .location{
+    background:var(--cream-50);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:stretch;
+  }
+  .location-info h2{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:14px;}
+  .location-info p.addr{font-size:1.05rem;font-weight:600;margin-bottom:22px;max-width:380px;}
+  .phone-list{display:flex;flex-direction:column;gap:10px;margin-bottom:26px;}
+  .phone-list a{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+    font-size:1rem;
+    color:var(--ink-950);
+    width:fit-content;
+    border-bottom:2px solid var(--gold-500);
+    padding-bottom:2px;
+    transition:color .2s;
+  }
+  .phone-list a:hover{color:var(--green-600);}
+  .hours{
+    font-size:.9rem;
+    color:var(--ink-900);
+    background:var(--cream-100);
+    display:inline-block;
+    padding:10px 16px;
+    border-radius:10px;
+    margin-bottom:24px;
+  }
+  .location-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .map-wrap{
+    border-radius:18px;
+    overflow:hidden;
+    border:2px solid var(--ink-950);
+    min-height:340px;
+  }
+  .map-wrap iframe{width:100%;height:100%;min-height:340px;border:0;}
+  @media (max-width:900px){ .location{grid-template-columns:1fr;} }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink-950);
+    color:var(--cream-100);
+    padding:60px 6vw 30px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:30px;
+    padding-bottom:30px;
+    border-bottom:1px solid rgba(247,238,221,.15);
+  }
+  .footer-brand img{height:54px;width:auto;margin-bottom:10px;}
+  .footer-brand .brand-name{
+    font-family:var(--ff-display);
+    font-weight:700;
+    color:var(--gold-500);
+    font-size:1.1rem;
+    display:block;
+    margin-bottom:8px;
+  }
+  .footer-brand p{max-width:320px;font-size:.9rem;opacity:.75;}
+  .footer-contact{font-size:.9rem;line-height:1.8;}
+  .footer-contact a{font-weight:700;}
+  .footer-social{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:14px;
+  }
+  .footer-social a{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:700;font-size:.88rem;
+    color:var(--cream-50);
+    background:rgba(247,238,221,.08);
+    padding:8px 14px;
+    border-radius:999px;
+    transition:background .2s, color .2s;
+  }
+  .footer-social a:hover{background:var(--gold-500);color:var(--ink-950);}
+  .footer-social svg{width:16px;height:16px;}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    padding-top:20px;
+    font-size:.78rem;
+    opacity:.6;
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#top">
+    <img src="assets/moochin-chottil-logo.png" alt="Moochin Chottil logo">
+    <span class="brand-name">Moochin Chottil</span>
+  </a>
+  <nav>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#gossip">Gossip Corner</a>
+      <a href="#location">Find Us</a>
+    </div>
+    <a class="icon-btn" href="https://www.instagram.com/moochin.chottil?igsh=ZGZ6MWs3NnBsajh4" target="_blank" rel="noopener" aria-label="Moochin Chottil on Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a class="btn btn-primary header-call" href="tel:+918891616349">📞 Call Now</a>
+  </nav>
+</header>
+
+<section id="top" class="hero">
+  <div class="hero-grid">
+    <div>
+      <img class="hero-logo" src="assets/moochin-chottil-logo.png" alt="Moochin Chottil logo">
+      <h1>MOOCHIN CHOTTIL
+        <small>where the chaya's hot and the talk's hotter</small>
+      </h1>
+      <p class="lede">Tea, coffee, oil snacks straight out of the kadai, and cool drinks for the Tirur heat — plus the best gossip bench in Codakkal.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:+918891616349">Call the Shop</a>
+        <a class="btn btn-ghost" href="#location">Get Directions</a>
+      </div>
+      <div class="hero-tags">
+        <span>Chaya &amp; Coffee</span>
+        <span>Oil Snacks</span>
+        <span>Cool Drinks</span>
+        <span>Gossip, Free</span>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="glass-wrap">
+        <div class="steam"></div>
+        <div class="steam"></div>
+        <div class="steam"></div>
+        <div class="word-bubble">Kollam!</div>
+        <div class="word-bubble">Sheri alle?</div>
+        <div class="word-bubble">Onnu koodi!</div>
+        <div class="glass-rim"></div>
+        <div class="glass"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span><span>Chaya</span><span>Coffee</span><span>Oil Snacks</span><span>Cool Drinks</span><span>Gossip</span></span>
+    <span><span>Chaya</span><span>Coffee</span><span>Oil Snacks</span><span>Cool Drinks</span><span>Gossip</span></span>
+  </div>
+</div>
+
+<section id="menu">
+  <div class="menu-head reveal">
+    <div class="eyebrow">What's on the stove</div>
+    <h2>Four reasons to pull up a bench</h2>
+  </div>
+  <div class="menu-grid">
+
+    <div class="menu-card reveal">
+      <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 16h20l-3 22a3 3 0 0 1-3 3H20a3 3 0 0 1-3-3z"/>
+        <path d="M19 9c0 2-2 2-2 4M25 9c0 2-2 2-2 4M31 9c0 2-2 2-2 4" stroke-opacity=".7"/>
+      </svg>
+      <h3>Tea (Chaya)</h3>
+      <p>Poured strong, served fast, never lukewarm.</p>
+      <ul>
+        <li>Kattan Chaya</li>
+        <li>Sulaimani</li>
+        <li>Masala Chai</li>
+        <li>Elaneer Chaya</li>
+      </ul>
+    </div>
+
+    <div class="menu-card reveal">
+      <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 20h22v8a9 9 0 0 1-9 9h-4a9 9 0 0 1-9-9z"/>
+        <path d="M32 22h3a4 4 0 0 1 0 8h-3"/>
+        <path d="M16 9c0 2-2 2-2 4M22 9c0 2-2 2-2 4" stroke-opacity=".7"/>
+      </svg>
+      <h3>Coffee</h3>
+      <p>Filter coffee the old way, cold coffee for the afternoons.</p>
+      <ul>
+        <li>Filter Coffee</li>
+        <li>Black Coffee</li>
+        <li>Cold Coffee</li>
+      </ul>
+    </div>
+
+    <div class="menu-card reveal">
+      <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="24" r="13"/>
+        <circle cx="24" cy="24" r="5" stroke-opacity=".6"/>
+        <path d="M14 14l-3-3M34 14l3-3M14 34l-3 3M34 34l3 3" stroke-opacity=".5"/>
+      </svg>
+      <h3>Oil Snacks</h3>
+      <p>Fresh out of the kadai — crisp, hot, gone in minutes.</p>
+      <ul>
+        <li>Pazham Pori</li>
+        <li>Parippu Vada</li>
+        <li>Uzhunnu Vada</li>
+        <li>Bonda</li>
+      </ul>
+    </div>
+
+    <div class="menu-card reveal">
+      <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 17h18l-2 19a3 3 0 0 1-3 3H20a3 3 0 0 1-3-3z"/>
+        <path d="M27 8l3 9" />
+        <path d="M19 17c0 3 2 4 5 4s5-1 5-4" stroke-opacity=".6"/>
+      </svg>
+      <h3>Cool Drinks</h3>
+      <p>For the heat outside, and the gossip just getting started.</p>
+      <ul>
+        <li>Lime Soda</li>
+        <li>Sarbath</li>
+        <li>Badam Milk</li>
+        <li>Fresh Juice</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="gallery-head reveal">
+    <div class="eyebrow">A peek inside</div>
+    <h2>Snapshots from the bench</h2>
+  </div>
+  <div class="gallery-grid">
+
+    <div class="gallery-card reveal">
+      <div class="badge" style="background:var(--gold-300)">
+        <svg viewBox="0 0 120 120">
+          <ellipse cx="60" cy="98" rx="30" ry="7" fill="var(--green-800)" opacity=".3"/>
+          <rect class="mini-steam" x="44" y="35" width="6" height="16" rx="3" fill="#FBF6E9" opacity=".7"/>
+          <rect class="mini-steam" x="58" y="30" width="6" height="16" rx="3" fill="#FBF6E9" opacity=".7" style="animation-delay:.6s"/>
+          <rect class="mini-steam" x="72" y="35" width="6" height="16" rx="3" fill="#FBF6E9" opacity=".7" style="animation-delay:1.2s"/>
+          <path d="M38 55 H82 L74 95 a6 6 0 0 1-6 5 H52 a6 6 0 0 1-6-5 Z" fill="var(--amber-400)"/>
+          <path d="M38 55 H82 L80 65 H40 Z" fill="#F6D573"/>
+          <ellipse cx="60" cy="55" rx="22" ry="4" fill="none" stroke="#FBF6E9" stroke-width="2" opacity=".6"/>
+        </svg>
+      </div>
+      <span>Chai Time</span>
+    </div>
+
+    <div class="gallery-card reveal">
+      <div class="badge" style="background:var(--cream-100)">
+        <svg viewBox="0 0 120 120">
+          <ellipse cx="60" cy="78" rx="40" ry="16" fill="var(--green-600)"/>
+          <ellipse cx="60" cy="74" rx="34" ry="12" fill="var(--green-800)" opacity=".5"/>
+          <path d="M34 70 q12 -22 28 -4 q14 16 28 -2 q-2 14 -14 18 q-16 6 -30 0 q-10 -4 -12 -12 Z" fill="var(--gold-500)"/>
+          <circle cx="46" cy="68" r="1.6" fill="#15261B" opacity=".5"/>
+          <circle cx="58" cy="64" r="1.6" fill="#15261B" opacity=".5"/>
+          <circle cx="70" cy="68" r="1.6" fill="#15261B" opacity=".5"/>
+          <circle cx="52" cy="74" r="1.6" fill="#15261B" opacity=".4"/>
+        </svg>
+      </div>
+      <span>Evening Fry</span>
+    </div>
+
+    <div class="gallery-card reveal">
+      <div class="badge" style="background:var(--gold-300)">
+        <svg viewBox="0 0 120 120">
+          <path d="M42 36 H78 L72 92 a6 6 0 0 1-6 6 H54 a6 6 0 0 1-6-6 Z" fill="none" stroke="#FBF6E9" stroke-width="3"/>
+          <path d="M45 58 H75 L70 90 a4 4 0 0 1-4 4 H54 a4 4 0 0 1-4-4 Z" fill="var(--gold-500)"/>
+          <rect x="50" y="44" width="9" height="9" rx="2" fill="#FBF6E9" transform="rotate(8 54 48)"/>
+          <rect x="64" y="40" width="8" height="8" rx="2" fill="#FBF6E9" transform="rotate(-10 68 44)"/>
+          <line x1="68" y1="20" x2="58" y2="60" stroke="var(--green-600)" stroke-width="5" stroke-linecap="round"/>
+          <line x1="68" y1="20" x2="58" y2="60" stroke="#FBF6E9" stroke-width="5" stroke-linecap="round" stroke-dasharray="4 6" opacity=".8"/>
+        </svg>
+      </div>
+      <span>Cool Down</span>
+    </div>
+
+    <div class="gallery-card reveal">
+      <div class="badge" style="background:var(--cream-100)">
+        <svg viewBox="0 0 120 120">
+          <rect x="20" y="80" width="80" height="8" rx="2" fill="var(--green-600)"/>
+          <rect x="26" y="90" width="8" height="14" fill="var(--green-800)"/>
+          <rect x="86" y="90" width="8" height="14" fill="var(--green-800)"/>
+          <circle cx="42" cy="52" r="11" fill="var(--ink-950)"/>
+          <path d="M30 80 q2 -20 12 -22 q10 -2 12 18 Z" fill="var(--ink-950)"/>
+          <circle cx="80" cy="52" r="11" fill="var(--ink-950)"/>
+          <path d="M68 80 q2 -20 12 -22 q10 -2 12 18 Z" fill="var(--ink-950)"/>
+          <path d="M55 38 q5 -10 14 -2 q3 8 -4 10 q-8 2 -10 -8 Z" fill="var(--gold-500)"/>
+          <circle cx="59" cy="38" r="1.4" fill="#15261B"/>
+          <circle cx="63" cy="38" r="1.4" fill="#15261B"/>
+          <circle cx="67" cy="39" r="1.4" fill="#15261B"/>
+        </svg>
+      </div>
+      <span>The Bench</span>
+    </div>
+
+  </div>
+</section>
+
+<section id="gossip" class="gossip">
+  <div class="gossip-copy reveal">
+    <div class="eyebrow" style="color:var(--gold-300)">The real menu item</div>
+    <h2>Pull up a bench. Stay a while.</h2>
+    <p>Every chottil has that one corner — the bench by the window, the stool near the stove — where the morning paper gets argued over twice.</p>
+    <p>Ours is no different. Come for the chaya, stay for the news nobody asked for.</p>
+  </div>
+  <div class="gossip-stage reveal" aria-hidden="true">
+    <div class="bubble b1">Kollam!</div>
+    <div class="bubble b2">Sheri alle?</div>
+    <div class="bubble b3">Kettallo?</div>
+    <div class="bubble b4">Pinne enthuvende?</div>
+    <div class="bubble b5">Onnu koodi!</div>
+  </div>
+</section>
+
+<section id="location" class="location">
+  <div class="location-info reveal">
+    <div class="eyebrow">Find the bench</div>
+    <h2>Moochin Chottil</h2>
+    <p class="addr">Ajithappadi, Codakkal, Tirur,<br>Malappuram, Kerala</p>
+    <div class="hours">Open Daily · 6:00 AM – 9:30 PM</div>
+    <div class="phone-list">
+      <a href="tel:+918891616349">📞 +91 88916 16349</a>
+      <a href="tel:+919567637605">📞 +91 95676 37605</a>
+      <a href="tel:+917736998636">📞 +91 77369 98636</a>
+    </div>
+    <div class="location-actions">
+      <a class="btn btn-dark" href="https://maps.app.goo.gl/kGh1kXrk2zb3atb39?g_st=ac" target="_blank" rel="noopener">Get Directions →</a>
+      <a class="btn btn-ghost" style="color:var(--ink-950);border-color:var(--ink-950)" href="https://www.instagram.com/moochin.chottil?igsh=ZGZ6MWs3NnBsajh4" target="_blank" rel="noopener">Follow on Instagram</a>
+    </div>
+  </div>
+  <div class="map-wrap reveal">
+    <iframe
+      src="https://www.google.com/maps?q=10.8674733,75.9669024&z=16&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Map to Moochin Chottil">
+    </iframe>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="assets/moochin-chottil-logo.png" alt="Moochin Chottil logo">
+      <span class="brand-name">MOOCHIN CHOTTIL</span>
+      <p>Tea, coffee, oil snacks, cool drinks — and a bench that's always warm.</p>
+    </div>
+    <div>
+      <div class="footer-contact">
+        Ajithappadi, Codakkal, Tirur<br>
+        Malappuram, Kerala<br><br>
+        <a href="tel:+918891616349">+91 88916 16349</a><br>
+        <a href="tel:+919567637605">+91 95676 37605</a><br>
+        <a href="tel:+917736998636">+91 77369 98636</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/moochin.chottil?igsh=ZGZ6MWs3NnBsajh4" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+          @moochin.chottil
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Moochin Chottil. All rights reserved.</span>
+    <span>Made with chaya and a little bit of gossip.</span>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
